@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+ 
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <link rel="shortcut icon" href="img/vacuna.png">
+  <link rel="stylesheet" href="css/index.css">
+  <title>DATOS VACUNACIÓN ESPAÑA</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+  <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/ghcss.css" />
+  <script type="module">
+    import { menuController } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
+    import { alertController } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
+    import { loadingController } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
+    window.loadingController = loadingController;
+    window.menuController = menuController;
+    window.alertController = alertController;
+  </script>
+  
+
+
+</head>
+
+<body>
+  <ion-app>
+    
+
+    <div class="ion-page" id="main-content">
+
+      <ion-header>
+        <ion-toolbar color="danger">
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title class="tituloapp">Datos Vacunación España</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-tabs>
+          <ion-tab tab="tab-mapa-restricciones">
+            <ion-nav>
+              <ion-card class="ion-text-center">
+                <div>
+                  <section>
+                    <div>
+                      <div>
+                        <h2>DATOS DE MADRID</h2>
+                        <img src="img/alcala-gate.png" alt="Datos de Madrid">
+  
+                        <section>
+                          <div>
+                            <h3>VACUNAS RECIBIDAS</h3>
+                            <h3><strong><p id="dosisDistribuidas"></p></strong></h3>
+                            <p>para <strong>6.779.888</strong> habitantes</strong></p>
+                          </div>
+                          <canvas id="myChartMadridEntregadas"></canvas>
+  
+                        </section>
+                      </div>
+                      <div><img src="img/vacuna.png" alt="Vacunas administradas en Madrid" width="150" height="150">
+                        <section>
+                          <div>
+                            <h3>VACUNAS ADMINISTRADAS</h3>
+                            <h3><strong><p id="dosisAdministradas"></p></strong></h3>
+                            <p>El <strong><span id="porcentajeAdministradasTotal"></span>&nbsp;%</strong> de vacunas recibidas ya han sido administradas</p>
+                            
+                          </div>
+                          <canvas id="myChartMadridAdministradas"></canvas>
+                          <p>El <strong><span id="porcentajeAlMenosUnaDosisMadrid"></span>&nbsp;%</strong> ha recibido al menos una dosis</p>
+                          <p>Última jornada <strong><span id="dosisUltimaJornadaM"></span></strong> dosis</p>
+                        </section>
+                      </div>
+                      <div><img src="img/vacunas-completas.png" alt="Dosis completas subministradas" width="150"
+                          height="150">
+                        <section>
+                          <div>
+                            <h3>PERSONAS INMUNIZADAS</h3>
+                            <h3><strong><p id="pautaCompleta"></p></strong></h3>
+                            <p><strong><span id="porcenSobreTotalCompletas"></span>&nbsp;%</strong> de la población
+                            </p>
+                          </div>
+                          <canvas id="myChartMadridCompletadas"></canvas>
+                          <p>Última jornada <strong><span id="inmunizadosUltimaJornadaM"></span></strong> inmunizados</p>
+                          <p hidden>Personas que han recibido las dos dosis de la vacuna.<br>Suponen un
+                            <strong><span id="porcentajeCompletas"></span>&nbsp;%</strong>
+                            de las dosis administradas.<br>Supone el <strong> <span
+                                id="porcenSobreTotalCompletasN"></span>&nbsp;%</strong> del
+                            total sobre la población de la Comunidad de Madrid
+                          </p>
+                        </section>
+                      </div>
+                      
+                    </div>
+                  </section>
+                </div>
+  
+                <ion-card-header>
+                  <ion-card-title>Ministerio de Sanidad<br><small>Datos actualizados a <span id="fechaAct"></small></ion-card-title>
+                </ion-card-header>
+                <ion-card-content>Contenido ofrecido por<br><a href="http://www.linkedin.com/in/valerianomoreno" target="_blank">
+                  <img src="img/ghp.png">
+                </a></ion-card-content>
+              </ion-card>      
+            </ion-nav>
+          </ion-tab>
+          <ion-tab tab="tab-mapa-incidencia-municipios">
+            <ion-nav>
+              <ion-card class="ion-text-center">
+                <div>
+                  <section>
+                    <div>
+                      <div>
+                        <h2>DATOS DE ESPAÑA</h2>
+                        <img src="img/flag.png" alt="Datos de España">
+                        <section>
+                          <div>
+                            <h3>VACUNAS RECIBIDAS</h3>
+                            <h3><strong><p id="dosis_totales_ES"></p></strong></h3>
+                            <p><span>para <strong>47.329.000</strong> habitantes</span></p>
+                            <canvas id="myChart"></canvas>
+                          </div>
+                          <p id="chart1_text"></p>
+                          <canvas id="graficoSabores"></canvas>
+                          <br>                       
+                        </section>
+                      </div>
+                      <div>
+                       
+                        <img src="img/vaccine.png" alt="Vacunas administradas en España" width="150" height="150">
+                        <section>
+                          <div>
+                            <h3>VACUNAS ADMINISTRADAS</h3>
+                            <h3><strong><p id="dosis_admin_ES"></p></strong></h3>
+                            <p id="chart2_text"></p>
+                            <canvas id="myChartAdministradas"></canvas>
+                            <p>El <strong><span id="porcentajeAlMenosUnaDosisEsp"></span>&nbsp;%</strong> ha recibido al menos una dosis</p>
+                            <p>Última jornada <strong><span id="dosisUltimaJornadaE"></span></strong> dosis</p>
+                          </div>
+                          
+                        </section>
+                      </div>
+                      <div>
+                        <!--<img src="img/line-chart.png" alt="Dosis completas subministradas"
+                  width="150" height="150">-->
+                      <img src="img/vaccine_completed.png" alt="Inmunizados en España" width="150" height="150">
+                        <section>
+                          <div>
+                            <h3>PERSONAS INMUNIZADAS</h3>
+                            <h3><strong><p id="pauta_comp_ES"></p></strong></h3>
+                            <p><strong><span id="porcentajePoblacionInmuneES"></span>&nbsp;%</strong>de la población</p>
+                            <canvas id="myChartCompletada"></canvas>
+                            <p>Última jornada <strong><span id="inmunizadosUltimaJornadaE"></span></strong> inmunizados</p>
+                          </div>
+                          <!--<p id="chart3_text"></p>-->
+                        </section>
+                      </div>
+                     
+                    </div>
+                  </section>
+                </div>
+  
+                
+                <ion-card-header>
+                  <ion-card-title>Ministerio de Sanidad<br><small>Datos actualizados a <span id="fechaActu"></small></ion-card-title>
+                </ion-card-header>
+                <ion-card-content>Contenido ofrecido por<br><a href="http://www.linkedin.com/in/valerianomoreno" target="_blank">
+                  <img src="img/ghp.png">
+                </a></ion-card-content>
+                
+                <p style="display: none">Mi copyright: tu quien ere peazo V</p>
+              </ion-card>
+            </ion-nav>
+          </ion-tab>
+          <ion-tab tab="tab-mapa-incidencia-zbs">
+            <ion-nav>
+              <ion-card class="ion-text-center">
+                <div>
+                  <section>
+                    <div>
+                      <div>
+                        <h2>DATOS POR COMUNIDADES</h2>
+                        <img src="img/spain.png" alt="Dato por comunidades">
+                        <section>
+                          <div>
+                            <h3>VACUNAS RECIBIDAS</h3>
+                            <p style="text-transform:lowercase">pulse cada barra para ver la cantidad</p>
+                            <canvas id="chart1"></canvas>
+                            
+                          </div>
+                        </section>
+                      </div>
+                      <div>
+  
+                        <section>
+                          <div>
+                            <h3>VACUNAS ADMINISTRADAS</h3>
+                            
+                            <canvas id="chart2"></canvas>
+                            
+                          </div>
+                        </section>
+                      </div>
+                      <div>
+  
+                        <section>
+                          <div>
+                            <h3>PERSONAS INMUNIZADAS</h3>
+                           
+                            <canvas id="chart3"></canvas>
+                            
+                          </div>
+                        </section>
+                      </div>
+                      
+                    </div>
+                  </section>
+                </div>
+  
+                <ion-card-header>
+                  <ion-card-title>Ministerio de Sanidad<br><small>Datos actualizados a <span id="fechaActua"></small></ion-card-title>
+                </ion-card-header>
+                <ion-card-content>Contenido ofrecido por<br><a href="http://www.linkedin.com/in/valerianomoreno" target="_blank">
+                  <img src="img/ghp.png">
+                </a></ion-card-content>
+                
+              </ion-card>
+            </ion-nav>
+          </ion-tab>
+          
+          <ion-tab-bar slot="bottom" color="danger">
+            <ion-tab-button tab="tab-mapa-restricciones">
+              <ion-label>DATOS MADRID</ion-label>
+            </ion-tab-button>
+            <ion-tab-button tab="tab-mapa-incidencia-municipios">
+              <ion-label>DATOS ESPAÑA</ion-label>
+            </ion-tab-button>
+
+            <ion-tab-button tab="tab-mapa-incidencia-zbs">
+              <ion-label>DATOS CCAA</ion-label>
+            </ion-tab-button>
+          </ion-tab-bar>
+        </ion-tabs>
+           
+      </ion-content>
+      <div id="srstats">
+        <img src="https://www.hrsanroque.com/contadorghv/contador.php">
+       </div>
+    </div>
+    
+  </ion-app>
+
+  
+  <script src="js/index.js"></script>
+  <script src="js/datosvacunacion.js"></script>
+</body>
+
+</html>

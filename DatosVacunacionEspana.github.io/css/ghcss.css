@@ -1,0 +1,36 @@
+ion-nav
+{
+  overflow-y: scroll;/*si desborda la gráfica, se ve bien en todos los dispositivos*/
+ 
+}
+
+h2, h3, p
+{
+    text-align: center;
+}
+
+img
+{
+    margin: auto;
+    display: block;
+}
+
+canvas{
+
+   /* width:1000px !important;
+   // height:600px !important;*/
+    margin: auto !important;
+    width:80% !important;
+  
+  }
+
+  #graficoSabores
+  {
+    width:100% !important;
+  }
+
+  ion-label {
+    /*font-family: fantasy;*/
+    font-size: 18px;
+  }
+
