@@ -10,3 +10,5 @@ variable: abstracción matemática del mundo real, necesaria para la representac
 las variables pueden tener atributos o campos o propiedade (características de la variable, a las que se accede
 por un punto)
 concatenar: "sumar palabras con +"
+multiplicar *
+comparar < <= >= != ==
