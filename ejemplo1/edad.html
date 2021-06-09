@@ -5,17 +5,21 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen'>
     <script src='edad.js'></script>
 </head>
 <!-- lo que escriba aquí, es comentarios
 TODO - ENUNCIADO
 
     1. definimos una caja de texto para que el usario pueda introducir su edad
-    2. definimos un botón para que nos envíe la edad
+    2. definimos un botón para que nos envíe la edad //parte estática IU controles
     3. vamos a comprobar si es menor de edad o mayor de edad 
     mostrándole el mensaje correspondiente en cada caso -->
 <body>
     EJEMPLO DE EDAD INICIO
+    <br>
+    <label for="edad">EDAD</label>
+    <input type="number" id="edad" name="edad">
+    <button onclick="comprobarMayoria()">COMPROBAR MAYORÍA EDAD</button>
 </body>
 </html>

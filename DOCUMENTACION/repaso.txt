@@ -1,0 +1,12 @@
+window: variable predifinida que representa a la ventana del navegador
+alert: función de window que permite mostrar mensajes en ventana emergente
+camelcase: notación para escribir la primera en minúscula y el inicio de cada palabra en mayúsucula
+LISTENER: programar un evento o estar pendiente de él
+CALLBACK: la llamada / entrada en ejecución de la función asociada
+funcion o método: un programa pequeñito que hace algo
+document: variable predifinida que representa todo el DOCUMENTO HTML
+var o let: para declarar variables (siempre que lo necesite)
+variable: abstracción matemática del mundo real, necesaria para la representación y resolución de un problema
+las variables pueden tener atributos o campos o propiedade (características de la variable, a las que se accede
+por un punto)
+concatenar: "sumar palabras con +"
