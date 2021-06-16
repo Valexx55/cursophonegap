@@ -2,7 +2,9 @@ const NUMERO = 100;
 const TOTAL_INTENTOS = 5;
 let numeroIntentos = 1;
 let incognita = parseInt((Math.random() * NUMERO) + 1);
+//TODO GUARDAR EL RECORD USANDO LOCALSTORAGE
 
+//https://developer.mozilla.org/es/docs/Web/API/Web_Storage_API 
 function cargarNumero() {
     document.getElementById("incognita").value = incognita;
 }
