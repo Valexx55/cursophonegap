@@ -19,7 +19,9 @@
 
 2 Conseguir un cable BUENO o a poder ser el oficial
 
-3 INSTALAR APACHe CORODOVA EN nuestro PC
+3 INSTALAR NODE JS (QUE CONTIENE NPM)
+
+4 INSTALAR APACHe CORODOVA EN nuestro PC
 
     npm install -g cordova
 
@@ -33,28 +35,28 @@
     En el caso de IOS https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html
 
 
-4 INSTALAR ANDROID STUDIO CON TODOS LOS EXTRAS EN NUESTRO EQUIPO
+5 INSTALAR ANDROID STUDIO CON TODOS LOS EXTRAS EN NUESTRO EQUIPO
 
-    JDK (JAVA)
+    JDK (JAVA) (Descarga$ de Oracle java -version)
     SDK (ANDROID)
     GRADLE (NPM ANDROID)
 
-5 INSTALAR GRADLE SIGUIENDO LA GUÍA
+6 INSTALAR GRADLE SIGUIENDO LA GUÍA
 
 https://gradle.org/install/
 
 EN LA SECCIÓN Installing manually
 
-6 INSTALAR EL JDK https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+7 INSTALAR EL JDK https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
 
-7 SETEAR VARIABLES DE ENTORNO según la documentación del punto 3
+8 SETEAR VARIABLES DE ENTORNO según la documentación del punto 3
 
     ANDROID 
     JAVA
     GRADLE
 
 
-8 CREAMOS UNA APP CORDOVA BÁSICA Y LA DESPLEGAMOS (https://cordova.apache.org/)
+9 CREAMOS UNA APP CORDOVA BÁSICA Y LA DESPLEGAMOS (https://cordova.apache.org/)
 
     cordova create MyApp
     cd MyApp
@@ -62,7 +64,7 @@ EN LA SECCIÓN Installing manually
     cordova run android (ESTE ÚLTIMO PASO SÓLO VALE SI TIENES MOVIL ANDROID CONECTADO. SI NECESITAS EMULADOR, PUNTO 9)
 
 
-9 PARA EL DESPLIGUE EN DISPOSITIVO VIRTUAL 
+10 PARA EL DESPLIGUE EN DISPOSITIVO VIRTUAL 
 
     CONFIGURAR UN EMULADOR DESDE ANDROID STUDIO
 

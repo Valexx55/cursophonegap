@@ -12,3 +12,4 @@ por un punto)
 concatenar: "sumar palabras con +"
 multiplicar *
 comparar < <= >= != ==
+hook o PUNTO DE ANCLAJE elemento de HTML donde irá un resultado

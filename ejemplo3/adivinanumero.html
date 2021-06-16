@@ -3,7 +3,8 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Adivina el número</title>
+    <script src='adivinanumero.js'></script>
    <!-- 
 
     QUEREEMOS HACER UN JUEGO, PARA QUE EL USUARIO ADIVINE UN NÚMERO
@@ -31,7 +32,15 @@
 
    -->
 </head>
-<body>
-    
+<body onload="cargarNumero()">
+    <p>
+        LA APP HA PENSADO UN NÚMERO ENTRE 1 Y 100
+        TRATA DE ADIVINARLO EN MENOS DE 5 INTENTOS
+    </p>
+    <p><input hidden id="incognita" name="incognita"></p>
+<input type="number" id="numero" name="numero">
+    <button onclick="compruebaNumero()">Comprobar</button></p>
+    <p id="resultado"></p>
+    <p id="intentos"></p>
 </body>
 </html>

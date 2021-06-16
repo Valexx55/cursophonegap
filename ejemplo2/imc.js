@@ -19,6 +19,7 @@ function calcularIMC() {
     //3. CALCULAR IMC
     let imc = peso / (altura * altura);
     console.log("IMC = " + imc);
+    
     //3.1 equivalencia del imc numérico al imc nominal
     //TODO 
     let elemento_imagen = document.getElementById("imagenimc");
