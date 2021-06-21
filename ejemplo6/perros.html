@@ -5,10 +5,15 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>PÁGINA DE PERROS</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> 
+    TODO MEJORAR CSS IMG PERRO-->
+    <link rel='stylesheet' type='text/css' href='perros.css'>
+
     <script src='perros.js'></script>
 </head>
 <body>
-    <button onclick="pedirPerro()">PEDIR PERRO</button>
+    <button onclick="pedirPerroAjax()">PEDIR PERRO AJAX</button>
+    <button onclick="pedirPerroFetch()">PEDIR PERRO FETCH</button>
+    <img hidden id="imgperro">
 </body>
 </html>
