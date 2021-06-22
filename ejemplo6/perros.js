@@ -24,7 +24,7 @@ function actualizarIMG (url_perro)
     elemento_img_perro.hidden = false;
 }
 
-function pedirPerroFetch() {
+function pedirTiempoFetch() {
     fetch(API_WEB_PERROS) //PROMESAS -
         .then(response => response.json()) //funciones de flecha //anónimas -response es el cuerpo HTTP de vuelta
         .then(infoperro => { //inicio función 
