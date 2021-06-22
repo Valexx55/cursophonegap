@@ -3,10 +3,44 @@
 //HAGAIS UN CONSOLE .LOG CON EL JSON RECIBIDO
 
 //api.openweathermap.org/data/2.5/weather?lat=40.229198&lon=-3.7756178&appid=11af6372e5b3a309ee6d413603c53656&units=metric&lang=es
-const API_WEB_OPENWEATHER = "https://api.openweathermap.org/data/2.5/weather?lat=40.229198&lon=-3.7756178&appid=11af6372e5b3a309ee6d413603c53656&units=metric&lang=es";
-var http_request;//ámbito global
 
-this.onload = pedirTiempoFetch; //programo el evento para que llame automáticamente al js
+    //----------------Option----------------
+const units = "metric";
+const language = "es"
+const APIKey = "d90479fb4df4b57559501aa0ec9fb0e6";
+    //-------------------------------------------
+
+let API_WEB_OPENWEATHER;
+
+this.onload = encuentrame(); //programo el evento para que llame automáticamente al js
+
+//Ubicacion
+
+function encuentrame() {
+    console.log("el usuario quiere saber su ubicación");
+    if (navigator.geolocation) {
+        console.log("El navegador sí tiene la geolocalización por la IP");
+        navigator.geolocation.getCurrentPosition(exito, fracaso);
+    } else {
+        console.log("El navegador sí tiene la geolocalización por la IP");
+        fracaso();
+    }
+
+}
+
+function exito(posicion) {
+    console.log("LATITUD : " + posicion.coords.latitude + "LONGUITUD : " + posicion.coords.longitude);
+    API_WEB_OPENWEATHER = "https://api.openweathermap.org/data/2.5/weather?lat="+posicion.coords.latitude+"&lon="+posicion.coords.longitude+"&appid="+APIKey+"&units="+units+"&lang="+language+"";
+    console.log(API_WEB_OPENWEATHER);
+    pedirTiempoFetch();
+    dibujarPosicion(posicion.coords.latitude, posicion.coords.longitude);
+}
+function fracaso() {
+    //console.log("NO Se ha podido averiguar la ubicación del usuario");
+    alert("No es posible saber su uobicación");
+}
+
+//---pedira el tiempo luego de obtener la ubicación
 
 
 function pedirTiempoFetch() {
@@ -15,7 +49,6 @@ function pedirTiempoFetch() {
         .then(infotiempo => { //inicio función 
             console.log(infotiempo);
             procesarInfoTiempo(infotiempo);
-            //actualizarIMG(infotiempo.message);
 
         }//final de la función
 
@@ -97,5 +130,20 @@ function procesarInfoTiempo(cuerpo) {
      * puesta sys.sunset
      * 
     */
+}
 
+//dibujar mapa
+
+function dibujarPosicion(latitud, longitud) {
+    var mymap = L.map('mapid').setView([latitud, longitud], 10);
+    var marker = L.marker([latitud, longitud]).addTo(mymap);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(mymap);
 }
