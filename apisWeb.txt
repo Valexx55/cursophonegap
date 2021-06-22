@@ -1,0 +1,12 @@
+PERROS: https://dog.ceo/api/breeds/image/random
+SUPERHEROES :     http://superheroapi.com/ 
+IMAGÉNES Y VIDEO:    https://pixabay.com/api/docs/ 
+TIEMPO: https://developer.accuweather.com/ 
+TIEMPO 2 : https://openweathermap.org/
+POKEMON:    https://pokeapi.co/
+RESULTADOS DE FUTBOL:  https://www.resultados-futbol.com/api/documentacion
+CINE:  https://www.themoviedb.org/ 
+NOTICIAS:    https://newsapi.org/
+LA GUERRA DE LAS GALAXIAS:    https://swapi.dev/api (( STAR WARS))
+ITUNES: https://itunes.apple.com/search
+LIBROS: https://developers.google.com/books/docs/overview
