@@ -15,3 +15,5 @@ comparar < <= >= != ==
 hook o PUNTO DE ANCLAJE elemento de HTML donde irá un resultado
 AJAX Y fetch: APIS DE JS PARA ACCER A APIS WEB
 HTTP: status / content-type - tipo de contenido/extensión- / url / método (get/post)
+--CON CORDOVA NO podemos hacer uso de NPM como si tuviéramos un servidor
+hay que traer las librerías/modulos por CDN--

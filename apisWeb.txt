@@ -8,5 +8,5 @@ RESULTADOS DE FUTBOL:  https://www.resultados-futbol.com/api/documentacion
 CINE:  https://www.themoviedb.org/ 
 NOTICIAS:    https://newsapi.org/
 LA GUERRA DE LAS GALAXIAS:    https://swapi.dev/api (( STAR WARS))
-ITUNES: https://itunes.apple.com/search
+ITUNES: https://itunes.apple.com/search/?media=music&term=shakira
 LIBROS: https://developers.google.com/books/docs/overview

@@ -55,7 +55,9 @@ function traducirMomento (tiempoms)
         
         // Will display time in 10:30:23 format
         momentohhmmss = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-    
+        moment.locale('es');
+        console.log("día de la semana " + moment().format('dddd'));
+
     return momentohhmmss;
 }
 
