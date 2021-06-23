@@ -28,7 +28,10 @@ function onDeviceReady() {
 
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
-
+//1 solución Elio -- tener el botón desactivado hasta que no se cargue
+//REVISAR POR QUÉ NO SE EJECUTA ESTE MÉTODO
+   // alert("cordova iniciado!");
+   // document.getElementById("botonlocaliza").disabled = false;
 }
 
 function dibujarGifEspera ()
@@ -48,12 +51,32 @@ function encuentrame() {
     alert("el usuario quiere saber su ubicación");
     if (navigator.geolocation) {
         alert("El navegador sí tiene la geolocalización por la IP");
-        navigator.geolocation.getCurrentPosition(exito, fracaso);
+        //COMPRUEBO SI EL GPS ESTÁ ACTIVADO
+        cordova.plugins.diagnostic.isGpsLocationEnabled(function(enabled){
+            alert("GPS activado " + enabled);
+            if (enabled)
+            {
+                navigator.geolocation.getCurrentPosition(exito, fracaso);
+            } else {
+                gpsDesactivado();
+            }
+            
+        }, function(error){
+            alert("Error al acceder al GPS _(");
+           
+        }); 
+        
     } else {
         alert("El navegador sí tiene la geolocalización por la IP");
         fracaso();
     }
 
+}
+
+function gpsDesactivado ()
+{
+    alert("GPS desactivado ACTIVELO PORFAVOR :S"); 
+    cordova.plugins.diagnostic.switchToLocationSettings();//LE LLEVO A AJUSTES
 }
 
 function dibujarPosicion(latitud, longitud) {
@@ -83,4 +106,63 @@ function fracaso() {
     //ocultar el gif
     ocultarGifEspera();
     alert("No es posible saber su uobicación");
+}
+
+
+const API_WEB_OPENWEATHER = "https://api.openweathermap.org/data/2.5/weather?appid=11af6372e5b3a309ee6d413603c53656&units=metric&lang=es"; //&lat=40.229198&lon=-3.7756178&";
+
+function obtenerTiempo (latitud, longitud)
+{
+    let url = API_WEB_OPENWEATHER + "&lat="+latitud+"&lon="+longitud;
+    console.log("url = " + url);
+    fetch(url) //PROMESAS -
+        .then(response => response.json()) //funciones de flecha //anónimas -response es el cuerpo HTTP de vuelta
+        .then(infotiempo => { //inicio función 
+            console.log(infotiempo);
+            procesarInfoTiempo(infotiempo);
+        }//final de la función
+
+        ).catch(function(error) {
+            console.log('Hubo un problema con la petición Fetch:' + error.message);
+          });
+}
+
+function traducirMomento (tiempoms)
+{
+    let momentohhmmss;
+
+        var date = new Date(tiempoms * 1000);
+        var hours = date.getHours();
+        var minutes = "0" + date.getMinutes();
+        var seconds = "0" + date.getSeconds();
+        
+        // Will display time in 10:30:23 format
+        momentohhmmss = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+        
+    return momentohhmmss;
+}
+
+function procesarInfoTiempo(cuerpo) {
+    document.getElementById("tablatiempo").hidden = false;
+    //ACCEDER A LA INFO DEL JSON 
+    let lista_tds = document.getElementsByTagName("td");
+    console.log(lista_tds.length);
+    //mostramos el icono del tiempo
+    //CORDOVA POR DEFECTO POR SEGURIDAD SÓLO PERMITE ACCEDER A URLS "SEGURAS"
+    lista_tds[0].firstChild.src = "https://openweathermap.org/img/wn/"+cuerpo.weather[0].icon+"@2x.png";
+    //descripcion
+    lista_tds[1].innerHTML = cuerpo.weather[0].description;
+    //temperatura
+    lista_tds[2].innerHTML = cuerpo.main.temp + " Cº";
+    //humedad
+    lista_tds[3].innerHTML = cuerpo.main.humidity + " %";
+    //viento
+    lista_tds[4].innerHTML = cuerpo.wind.speed + " m/s";
+    //amananece
+    lista_tds[5].innerHTML = traducirMomento(cuerpo.sys.sunrise);
+    //anocher
+    lista_tds[6].innerHTML = traducirMomento(cuerpo.sys.sunset);
+
+
+
 }

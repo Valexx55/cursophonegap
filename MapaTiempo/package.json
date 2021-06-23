@@ -15,13 +15,17 @@
   "devDependencies": {
     "cordova-android": "^9.1.0",
     "cordova-plugin-geolocation": "^4.1.0",
-    "cordova-plugin-whitelist": "^1.3.4"
+    "cordova-plugin-whitelist": "^1.3.4",
+    "cordova.plugins.diagnostic": "^6.0.3"
   },
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
       "cordova-plugin-geolocation": {
         "GPS_REQUIRED": "true"
+      },
+      "cordova.plugins.diagnostic": {
+        "ANDROIDX_VERSION": "1.+"
       }
     },
     "platforms": [
