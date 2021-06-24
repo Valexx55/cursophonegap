@@ -35,6 +35,10 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
     <meta name="color-scheme" content="light dark">
+    <!-- importamos IONIC -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <!-- css mapas -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -46,32 +50,45 @@
     <link rel="stylesheet" href="css/index.css">
     <title>Hello World</title>
 </head>
+
 <body>
-    
-      <button id="botonlocaliza"  style="width: 100%; height: 15%" onclick="encuentrame()">ENCUÉNTRAME</button>
-    <div id="mapid" style="width: 100%; height: 70%;">
-        <img src="https://thumbs.gfycat.com/DesertedPeacefulHellbender-max-1mb.gif" hidden id="imagenespera">
-    </div>
-    <table id="tablatiempo" style="width: 100%; height: 30%;" hidden>
-        <tr>
-            <th>TIEMPO</th>
-            <th>DESCRIPCION</th>
-            <th>TEMPERATURA</th>
-            <th>HUMEDAD</th>
-            <th>VIENTO</th>
-            <th>AMANECER</th>
-            <th>ANOCHECE</th>
-        </tr>
-        <tr>
-            <td><img></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
+    <ion-app>
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>MAPA DEL TIEMPO</ion-title>
+            </ion-toolbar>
+        </ion-header>
+
+        <ion-content class="ion-padding">
+            <ion-button expand="full" onclick="encuentrame()">ENCUÉNTRAME &nbsp; <ion-icon name="locate-outline"></ion-icon></ion-button>
+            
+                <ion-card-header id="mapid" style="width: 100%; height: 70% !important;">
+                    <img src="https://thumbs.gfycat.com/DesertedPeacefulHellbender-max-1mb.gif" hidden
+                        id="imagenespera">
+                    
+                </ion-card-header>
+
+                <ion-card-content style="width: max-width; height: 20% !important;">
+                  
+                    <ion-grid id="tablatiempo">
+                    
+                    <ion-row>
+                        <ion-col class="ion-align-self-center"><img></ion-col>
+                        <ion-col class="ion-align-self-center"></ion-col>
+                        <ion-col class="ion-align-self-center"></ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col class="ion-align-self-center"></ion-col>
+                        <ion-col class="ion-align-self-center"></ion-col>
+                        <ion-col class="ion-align-self-center"></ion-col>
+                        <ion-col class="ion-align-self-center"></ion-col>
+                    </ion-row>
+                </ion-grid>
+                </ion-card-content>
+            </ion-card>
+          
+        </ion-content>
+    </ion-app>
     <script src="cordova.js"></script>
     <script src="js/index.js"></script>
 </body>

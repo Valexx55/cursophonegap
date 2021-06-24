@@ -48,12 +48,12 @@ function ocultarGifEspera ()
 function encuentrame() {
     //dibujar el gif
     dibujarGifEspera();
-    alert("el usuario quiere saber su ubicación");
+   // alert("el usuario quiere saber su ubicación");
     if (navigator.geolocation) {
-        alert("El navegador sí tiene la geolocalización por la IP");
+       // alert("El navegador sí tiene la geolocalización por la IP");
         //COMPRUEBO SI EL GPS ESTÁ ACTIVADO
         cordova.plugins.diagnostic.isGpsLocationEnabled(function(enabled){
-            alert("GPS activado " + enabled);
+          //  alert("GPS activado " + enabled);
             if (enabled)
             {
                 navigator.geolocation.getCurrentPosition(exito, fracaso);
@@ -62,12 +62,12 @@ function encuentrame() {
             }
             
         }, function(error){
-            alert("Error al acceder al GPS _(");
+          //  alert("Error al acceder al GPS _(");
            
         }); 
         
     } else {
-        alert("El navegador sí tiene la geolocalización por la IP");
+       // alert("El navegador sí tiene la geolocalización por la IP");
         fracaso();
     }
 
@@ -75,7 +75,7 @@ function encuentrame() {
 
 function gpsDesactivado ()
 {
-    alert("GPS desactivado ACTIVELO PORFAVOR :S"); 
+    //alert("GPS desactivado ACTIVELO PORFAVOR :S"); 
     cordova.plugins.diagnostic.switchToLocationSettings();//LE LLEVO A AJUSTES
 }
 
@@ -95,17 +95,17 @@ function dibujarPosicion(latitud, longitud) {
 }
 
 function exito(posicion) {
-    alert("Se ha podido averiguar la ubicación del usuario");
-    alert("LATITUD : " + posicion.coords.latitude + "LONGUITDU : " + posicion.coords.longitude);
+   // alert("Se ha podido averiguar la ubicación del usuario");
+   // alert("LATITUD : " + posicion.coords.latitude + "LONGUITDU : " + posicion.coords.longitude);
     //ocultar el gif
     ocultarGifEspera();
     dibujarPosicion(posicion.coords.latitude, posicion.coords.longitude);
 }
 function fracaso() {
-    alert("NO Se ha podido averiguar la ubicación del usuario");
+   // alert("NO Se ha podido averiguar la ubicación del usuario");
     //ocultar el gif
     ocultarGifEspera();
-    alert("No es posible saber su uobicación");
+  //  alert("No es posible saber su uobicación");
 }
 
 
@@ -143,26 +143,28 @@ function traducirMomento (tiempoms)
 }
 
 function procesarInfoTiempo(cuerpo) {
-    document.getElementById("tablatiempo").hidden = false;
+    //document.getElementById("tablatiempo").hidden = false;
     //ACCEDER A LA INFO DEL JSON 
-    let lista_tds = document.getElementsByTagName("td");
-    console.log(lista_tds.length);
+    let lista_cols = document.getElementsByTagName("ion-col");
+    console.log(lista_cols.length);
     //mostramos el icono del tiempo
     //CORDOVA POR DEFECTO POR SEGURIDAD SÓLO PERMITE ACCEDER A URLS "SEGURAS"
-    lista_tds[0].firstChild.src = "https://openweathermap.org/img/wn/"+cuerpo.weather[0].icon+"@2x.png";
+    lista_cols[0].firstChild.src = "https://openweathermap.org/img/wn/"+cuerpo.weather[0].icon+"@2x.png";
     //descripcion
-    lista_tds[1].innerHTML = cuerpo.weather[0].description;
+    lista_cols[1].innerHTML = cuerpo.weather[0].description;
     //temperatura
-    lista_tds[2].innerHTML = cuerpo.main.temp + " Cº";
+    lista_cols[2].innerHTML = cuerpo.main.temp + " Cº";
     //humedad
-    lista_tds[3].innerHTML = cuerpo.main.humidity + " %";
+    lista_cols[3].innerHTML = cuerpo.main.humidity + " %";
     //viento
-    lista_tds[4].innerHTML = cuerpo.wind.speed + " m/s";
+    lista_cols[4].innerHTML = cuerpo.wind.speed + " m/s";
     //amananece
-    lista_tds[5].innerHTML = traducirMomento(cuerpo.sys.sunrise);
+    lista_cols[5].innerHTML = traducirMomento(cuerpo.sys.sunrise);
     //anocher
-    lista_tds[6].innerHTML = traducirMomento(cuerpo.sys.sunset);
+    lista_cols[6].innerHTML = traducirMomento(cuerpo.sys.sunset);
 
+    //TODO añadir info de la localidad en el tiempo
+    //y la hora (librería moment)
 
 
 }
