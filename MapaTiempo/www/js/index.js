@@ -122,9 +122,9 @@ function obtenerTiempo (latitud, longitud)
             procesarInfoTiempo(infotiempo);
         }//final de la función
 
-        ).catch(function(error) {
+        );/*).catch(function(error) {
             console.log('Hubo un problema con la petición Fetch:' + error.message);
-          });
+          });*/
 }
 
 function traducirMomento (tiempoms)
@@ -145,6 +145,8 @@ function traducirMomento (tiempoms)
 function procesarInfoTiempo(cuerpo) {
     //document.getElementById("tablatiempo").hidden = false;
     //ACCEDER A LA INFO DEL JSON 
+    console.log ("Localidad " +cuerpo.name);
+    document.getElementById("textolocalidad").innerHTML = cuerpo.name + " "+ moment().format('MMMM Do YYYY, h:mm:ss a');
     let lista_cols = document.getElementsByTagName("ion-col");
     console.log(lista_cols.length);
     //mostramos el icono del tiempo
