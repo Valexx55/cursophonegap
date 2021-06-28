@@ -91,7 +91,31 @@ function dibujarPosicion(latitud, longitud) {
         tileSize: 512,
         zoomOffset: -1
     }).addTo(mymap);
-    obtenerTiempo (latitud, longitud);
+    obtenerTiempo (latitud, longitud);//VERSIÓN FETCH/JS -- PUEDE DAR CORS
+    //obtenerTiempoJSONP (latitud, longitud);//VERSIÓN JSONP -- EVITAR EL CORS
+}
+
+function obtenerTiempoJSONP (latitud, longitud)
+{
+    //CONSUMIMOS EL API DE OPENWHEATHER POR JSONP
+    //1) creo un elemento script
+    //2) le seteo en el atributo src la URL con la llamada JSONP
+    //3) añado ese elemento al cuerpo del HTML
+
+    //al hacer esto, autómaticamente se ejecuta el script y se carga y se produce el callback
+    let elemento_script = document.createElement("script");
+    elemento_script.src = API_WEB_OPENWEATHER + "&lat="+latitud+"&lon="+longitud+"&callback=procesarInfoTiempoJSONP";
+    document.body.append (elemento_script);
+
+
+
+}
+
+function procesarInfoTiempoJSONP (infotTJson)
+{
+    console.log("INFO RX JSONP");
+    console.log(infotTJson);
+    procesarInfoTiempo(infotTJson);
 }
 
 function exito(posicion) {
@@ -110,6 +134,9 @@ function fracaso() {
 
 
 const API_WEB_OPENWEATHER = "https://api.openweathermap.org/data/2.5/weather?appid=11af6372e5b3a309ee6d413603c53656&units=metric&lang=es"; //&lat=40.229198&lon=-3.7756178&";
+
+//https://api.openweathermap.org/data/2.5/weather?appid=11af6372e5b3a309ee6d413603c53656&units=metric&lang=es&lat=40.229198&lon=-3.7756178&callback=eurocopa";
+
 
 function obtenerTiempo (latitud, longitud)
 {
