@@ -27,11 +27,41 @@ function onDeviceReady() {
     // Cordova is now initialized. Have fun!
 
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    document.getElementById('deviceready').classList.add('ready');
+    //document.getElementById('deviceready').classList.add('ready');
+    document.addEventListener("pause", dejaDeVerse, false);
+    document.addEventListener("resume", vuelveAVerse, false);
 //1 solución Elio -- tener el botón desactivado hasta que no se cargue
 //REVISAR POR QUÉ NO SE EJECUTA ESTE MÉTODO
    // alert("cordova iniciado!");
    // document.getElementById("botonlocaliza").disabled = false;
+}
+//USAMOS LOS EVENTOS DE ONPAUSE ONRESUMEN PARA 
+//MEJORAR LA RESPUESTA DE LA APLICACIÓN
+//Y QUE AL VOLVER DE ACTIVAR EL GPS
+//ME LOCALICE AUTOMÁTICAMENTE
+
+function dejaDeVerse ()
+{
+console.log ("entro en pausa evento pause");
+}
+
+function vuelveAVerse ()
+{ //VUELVE DEL GPS
+    console.log ("entro en continuar evento resume");
+    cordova.plugins.diagnostic.isGpsLocationEnabled(function(enabled){
+        //  alert("GPS activado " + enabled);
+          if (enabled)
+          {
+              navigator.geolocation.getCurrentPosition(exito, fracaso);
+          } else {
+              gpsDesactivado();
+          }
+          
+      }, function(error){
+        //  alert("Error al acceder al GPS _(");
+         
+      });
+    
 }
 
 function dibujarGifEspera ()
