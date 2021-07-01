@@ -29,22 +29,59 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <meta name="color-scheme" content="light dark">
         <link rel="stylesheet" href="css/index.css">
-        <title>Hello World</title>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+        <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
+        <title>PÁGINA DE BÚSQUEDA DE EVENTOS</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
+        <ion-app>
+            <ion-header>
+              <ion-toolbar>
+                <ion-title>BÚSQUEDA DE EVENTOS</ion-title>
+              </ion-toolbar>
+            </ion-header>
+          
+            <ion-content class="ion-padding">
+              <!-- <h1>Main Content</h1> -->
+              <ion-item>
+                <ion-label>Elija distrito</ion-label>
+                <ion-select id="selectdistritos" ok-text="OK" cancel-text="CANCELAR">
+                  <ion-select-option value="ARGANZUELA">ARGANZUELA</ion-select-option>
+                  <ion-select-option value="BARAJAS">BARAJAS</ion-select-option>
+                  <ion-select-option value="CARABANCHEL">CARABANCHEL</ion-select-option>
+                  <ion-select-option value="CENTRO">CENTRO</ion-select-option>
+                  <ion-select-option value="CHAMARTIN">CHAMARTIN</ion-select-option>
+                  <ion-select-option value="CHAMBERI">CHAMBERI</ion-select-option>
+                  <ion-select-option value="CIUDAD LINEAL">CIUDAD LINEAL</ion-select-option>
+                  <ion-select-option value="FUENCARRAL-EL PARDO">FUENCARRAL-EL PARDO</ion-select-option>
+                  <ion-select-option value="HORTALEZA">HORTALEZA</ion-select-option>
+                  <ion-select-option value="LATINA">LATINA</ion-select-option>
+                  <ion-select-option value="MONCLOA-ARAVACA">MONCLOA-ARAVACA</ion-select-option>
+                  <ion-select-option value="MORATALAZ">MORATALAZ</ion-select-option>
+                  <ion-select-option value="PUENTE DE VALLECAS">PUENTE DE VALLECAS</ion-select-option>
+                  <ion-select-option value="RETIRO">RETIRO</ion-select-option>
+                  <ion-select-option value="SALAMANCA">SALAMANCA</ion-select-option>
+                  <ion-select-option value="SAN BLAS-CANILLEJAS">SAN BLAS-CANILLEJAS</ion-select-option>
+                  <ion-select-option value="USERA">USERA</ion-select-option>
+                  <ion-select-option value="VICALVARO">VICALVARO</ion-select-option>
+                  <ion-select-option value="VILLA DE VALLECAS">VILLA DE VALLECAS</ion-select-option>
+                  <ion-select-option value="VILLAVERDE">VILLAVERDE</ion-select-option>
+                </ion-select>
+              </ion-item>
+             
+                  <ion-list id="lista_eventos">
+
+                  </ion-list>
+              
+            </ion-content>
+          </ion-app>
         <script src="cordova.js"></script>
         <script src="js/index.js"></script>
     </body>
