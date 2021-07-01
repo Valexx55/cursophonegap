@@ -64,6 +64,9 @@ function borrarlista ()
     elementopadre_lista.innerHTML="";
 }
 
+let array_eventos = [];
+//
+
 //console.log("Titiulo " + eventos['@graph'][0].title);// FORMA DE ACCESO POR EN EL NOMBRE DEL ATRIBUTO EN VEZ POR PUNTO BY JOSE LUIS
 function mostrarEventos(eventos) {
     //TODO MOSTRAR los eventgos
@@ -80,5 +83,32 @@ function mostrarEventos(eventos) {
         nuevo_label.innerHTML = eventos['@graph'][i].title;
         nuevo_item.appendChild(nuevo_label);
         elementopadre_lista.appendChild(nuevo_item);
+        //TENGO QUE AÑADIR EL EVENTO ON CLICK
+        nuevo_item.addEventListener('click', detalleEvento);
+        nuevo_item.setAttribute('id', i);
+        array_eventos.push(eventos['@graph'][i]);//guardo eventos
+
+        //item_localidad.addEventListener("click", zonaSeleccionada);
     }
+}
+/*"@id": "https://datos.madrid.es/egob/catalogo/tipo/evento/11287792-conectando-tu-cuerpo.json",
+            "title": "Conectando con tu cuerpo",
+            "location": {
+                "latitude": 40.473659104975354,
+                "longitude": -3.592395079190456
+            }*/
+function detalleEvento ()
+{
+    console.log("El usuario quiere ir a detalle");
+    console.log(this.firstChild.innerHTML);//THIS es el elemento tocado
+    console.log(this.id);//THIS es el elemento tocado
+    console.log(array_eventos[this.id].title);
+    console.log(array_eventos[this.id].location.latitude);
+    console.log(array_eventos[this.id].location.longitude);
+    console.log(array_eventos[this.id]['@id']);
+    
+    sessionStorage.setItem('evento', JSON.stringify(array_eventos[this.id])); //SERIALIZAR HACER UN OBJETO EN TEXTO PARA SU TRANSMISIÓN O ALMACENAMIENTO
+    location.href="detalleevento.html";//LOGRO NAVEGAR A LA OTRA PÁGINA
+    //podría buscar en el array con ese nombre con filter con find 
+
 }
