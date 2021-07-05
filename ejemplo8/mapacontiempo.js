@@ -31,7 +31,7 @@ function encuentrame() {
 
 }
 
-function dibujarPosicion(latitud, longitud) {
+function dibujarMapa(latitud, longitud) {
     var mymap = L.map('mapid').setView([latitud, longitud], 10);
     var marker = L.marker([latitud, longitud]).addTo(mymap);
 
@@ -51,7 +51,7 @@ function exito(posicion) {
     console.log("LATITUD : " + posicion.coords.latitude + "LONGUITDU : " + posicion.coords.longitude);
     //ocultar el gif
     ocultarGifEspera();
-    dibujarPosicion(posicion.coords.latitude, posicion.coords.longitude);
+    dibujarMapa(posicion.coords.latitude, posicion.coords.longitude);
 }
 function fracaso() {
     console.log("NO Se ha podido averiguar la ubicación del usuario");

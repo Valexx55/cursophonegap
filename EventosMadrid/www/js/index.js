@@ -29,12 +29,13 @@ function onDeviceReady() {
 }
 
 const URL_API_EVENTOS_MADRID_POR_DISTRITO = "https://datos.madrid.es/egob/catalogo/206974-0-agenda-eventos-culturales-100.json?distrito_nombre="
-
+let array_eventos;// = [];//array eventos
 
 let selectdistritos = document.getElementById('selectdistritos'); //Capturo el select
 selectdistritos.addEventListener('ionChange', obtenerEventos);
+let lc;//loading controller variable que representa el diáglogo de cargando...
 
-function obtenerEventos() {
+async function obtenerEventos() {
     //let selectdistritos = document.getElementById('selectdistritos'); //Capturo el select
     let distrito = selectdistritos.value;
     console.log("Distrito seleccionado = " + distrito);
@@ -43,14 +44,49 @@ function obtenerEventos() {
     console.log(url_get_normalizada);
     //borrarlista
     borrarlista();
+    array_eventos = [];//inicializo el array
+    lc = await loadingController.create({
+        message: 'Cargando...',
+        spinner: 'bubbles'
+    });
+    await lc.present();//muestro
+
     fetch(url_get_normalizada)
         .then(respuesta => respuesta.json())
         .then(eventos => {
             console.log(eventos);
             mostrarEventos(eventos);
-        });
+            lc.dismiss();//quitamos el circulito de espera
+        }).catch(error => {
+            lc.dismiss();
+            console.log("error " + error);     
+            //alert ("error " + error);
+            mostrarAvisoFallo();
+        });;
 
 }
+
+async function mostrarAvisoFallo() {
+    const toast = document.createElement('ion-toast');
+    toast.message = 'NO SE HA PODIDO RECUPERAR LOS DATOS';
+    toast.duration = 5000;
+    toast.color = "danger";
+    toast.position = "middle";
+  
+    document.body.appendChild(toast);
+    return toast.present();
+  }
+
+  async function mostrarSinEventos() {
+    const toast = document.createElement('ion-toast');
+    toast.message = 'NO HAY EVENTOS PREVISTOS ACTUALMENTE';
+    toast.duration = 5000;
+    toast.color = "secondary";
+    toast.position = "middle";
+  
+    document.body.appendChild(toast);
+    return toast.present();
+  }
 //TODO 
 //1Controlar fallos (HTTP STATUS fetch)
 //2Controlar que venga vacía la lista o no hay eventos /graph es cero
@@ -62,9 +98,10 @@ function borrarlista ()
 {
     let elementopadre_lista = document.getElementById("lista_eventos");
     elementopadre_lista.innerHTML="";
+
 }
 
-let array_eventos = [];
+
 //
 
 //console.log("Titiulo " + eventos['@graph'][0].title);// FORMA DE ACCESO POR EN EL NOMBRE DEL ATRIBUTO EN VEZ POR PUNTO BY JOSE LUIS
@@ -77,19 +114,28 @@ function mostrarEventos(eventos) {
 
     let nuevo_item;
     let nuevo_label;
-    for (let i = 0; i < eventos['@graph'].length; i++) {
-        nuevo_item = document.createElement('ion-item');
-        nuevo_label = document.createElement('ion-label');
-        nuevo_label.innerHTML = eventos['@graph'][i].title;
-        nuevo_item.appendChild(nuevo_label);
-        elementopadre_lista.appendChild(nuevo_item);
-        //TENGO QUE AÑADIR EL EVENTO ON CLICK
-        nuevo_item.addEventListener('click', detalleEvento);
-        nuevo_item.setAttribute('id', i);
-        array_eventos.push(eventos['@graph'][i]);//guardo eventos
 
-        //item_localidad.addEventListener("click", zonaSeleccionada);
+    if (eventos['@graph'].length==0)
+    {
+        mostrarSinEventos();
     }
+    else {
+
+        for (let i = 0; i < eventos['@graph'].length; i++) {
+            nuevo_item = document.createElement('ion-item');
+            nuevo_label = document.createElement('ion-label');
+            nuevo_label.innerHTML = eventos['@graph'][i].title;
+            nuevo_item.appendChild(nuevo_label);
+            elementopadre_lista.appendChild(nuevo_item);
+            //TENGO QUE AÑADIR EL EVENTO ON CLICK
+            nuevo_item.addEventListener('click', detalleEvento);
+            nuevo_item.setAttribute('id', i);
+            array_eventos.push(eventos['@graph'][i]);//guardo eventos
+    
+            //item_localidad.addEventListener("click", zonaSeleccionada);
+        }
+    }
+   
 }
 /*"@id": "https://datos.madrid.es/egob/catalogo/tipo/evento/11287792-conectando-tu-cuerpo.json",
             "title": "Conectando con tu cuerpo",
