@@ -35,33 +35,37 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
     <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
     <link rel="stylesheet" href="css/index.css">
-    <script src="js/detalleevento.js"></script>
+    
+
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="js/detalleevento.js"></script>
     <title>Hello World</title>
 </head>
 
 <body>
 
-    <!--  ESTA ES LA PÁGINA DEL DETALLE DE LOS EVENTOS
+    <ion-app>
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>DETALLE EVENTO</ion-title>
+            </ion-toolbar>
+        </ion-header>
 
-        //TODO inlcuir opciones de compartir, de agendar, de evaluar
-        junto con los detalles del evento (mapa, descripción)
-       -->
-    <div id="mapid" style="width: 300px; height: 200px; background-color: aqua;">
-        MAPA
-    </div>
-    <div id="infoevento"></div>
-    <script src="cordova.js"></script>
+        <ion-content class="ion-padding">
+            <div id="mapid" style="width: max-width; height: 400px;">
+            </div>
+            <div id="infoevento"></div>
+            <a href="https://www.google.com/maps/search/?api=1&query=47.5951518%2C-122.3316393">como llegar</a>
+        </ion-content>
+    </ion-app>
+    
+    <!-- <script src="cordova.js"></script> -->
 
 </body>
 
