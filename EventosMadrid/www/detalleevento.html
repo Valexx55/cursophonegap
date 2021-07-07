@@ -49,7 +49,7 @@
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
     <script src="js/detalleevento.js"></script>
-    <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
+    <!-- <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script> -->
     <!-- <script type="text/javascript" src="js/Calendar.js"></script> -->
     <title>Hello World</title>
 </head>
@@ -69,15 +69,20 @@
                 <div id="mapid" style="width: max-width; height: 400px;">
                 </div>
                 <div id="comollegar"><a id="enlacecll"><ion-button color="primary" >CÓMO LLEGAR</ion-button></a></div>
+                <!-- <div id="comollegar"><a id="enlacecll"><ion-button color="#ff0080" >CÓMO LLEGAR</ion-button></a></div> -->
             </div>
             <div id="infoevento"></div>
             <!-- <a href="https://www.google.com/maps/search/?api=1&query=47.5951518%2C-122.3316393">como llegar</a> -->
-            <ion-button expand="block" onclick="agendar()">AGENDAR</ion-button>
-            <star-rating v-model="rating"></star-rating>
+            <ion-button expand="block" onclick="agendar()">AGENDAR &nbsp; <ion-icon name="bookmark-outline"></ion-icon></ion-button>
+            <!-- <ion-button expand="full" onclick="encuentrame()">COMPARTIR &nbsp; <ion-icon name="share-social-outline"></ion-icon></ion-button> -->
+            <ion-button expand="full" onclick="compartir()">COMPARTIR &nbsp; <ion-icon name="share-social-outline"></ion-icon></ion-button>
+            <!-- <button onclick="window.plugins.socialsharing.share('Message and link', null, null, 'http://www.x-services.nl')">message and link</button> -->
+            <!-- <ion-button expand="full" href="https://wa.me/?text=Quisiera%20consultar%20sobre%20la%20oferta%20de%20departamento`">COMPARTIR &nbsp; <ion-icon name="share-social-outline"></ion-icon></ion-button> -->
+            <!-- <star-rating v-model="rating"></star-rating> -->
         </ion-content>
     </ion-app>
 
-    <script src="cordova.js"></script> <!-- IMPRESCINDIBLE-->
+    <script src="cordova.js"></script> <!-- IMPRESCINDIBLE para usar los plugins-->
     <script src="js/index.js"></script>
     
    

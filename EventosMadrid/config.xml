@@ -19,7 +19,9 @@
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreenSpinnerColor" value="white" />
+    <preference name="AndroidXEnabled" value="true" />
     <platform name="android">
+    
         <allow-intent href="market:*" />
         <icon background="ic_launcher.png" density="ldpi" foreground="ic_launcher.png" />
         <icon background="ic_launcher.png" density="mdpi" foreground="ic_launcher.png" />
